@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ropa+Sans&family=Rubik&display=swap');
+
+#root{
+    background-color: "#FFFFFF";
+    width: 100%;
+    min-height: 100%;
+    margin: 0vh;
+}
+.container{
+    background-color: "#FFFFFF";
+    padding-left: 4vh;
+    min-height: 100%;
+}
+.title{
+    font-family: "Rubik", sans-serif;
+    color: "#292929";
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.home-container{
+    
+    padding-left: 2em;
+    padding-top: 3em;
+    width: 50%;
+}
+.home-text{
+    padding-left: 2em;
+    width: 40%;
+}
+.Butt{
+    position: absolute;
+    left: 10%;
+    padding: 30px;
+}
+
+.join{
+    margin-top:-20px;
+    font-size: 2em;
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .home-container{
+        padding-top: 2em;
+        width: 100%;
+    }
+    .home-text{
+        width: 90%;
+    }
+    .Butt{
+        padding: 30px 60px;
+        align-self: start;
+        align-content: center;
+        align-items: center;
+    }
+    .join{
+        top: -30px;
+        font-weight: bold;
+        font-family:'Roboto' ,sans-serif;
+    }
+  }

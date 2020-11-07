@@ -1,0 +1,62 @@
+.login-bloc1{
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding-left: 0em;
+    width: 100%;
+
+}
+.lcard1 p{
+
+    font-size: 4em;
+    font-family: "Ropa sans", sans-serif ;
+}
+.login-bloc2{
+    
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0em;
+    width: 100%;
+}
+.login-bloc2 .sf{
+    position: absolute;
+    align-content: center;
+    align-items: center;
+    width:50%
+    ;left:20%
+
+}
+
+.limg{
+    left: 40% !important;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .login-bloc1{
+        padding-left: 0em;
+        width: 0%;
+        left: 0%;
+    }
+    .lcard1 .mini{
+        padding-top: 0em;
+    }
+    .login-bloc2{
+    position: fixed;
+    width: 100%;
+    align-content: center;
+    align-items: center;
+}
+}
+
+
+.sign-bloc2{
+    
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20em;
+    width: 100%;
+}

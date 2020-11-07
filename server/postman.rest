@@ -1,0 +1,27 @@
+
+## GET http://localhost:5000/api HTTP/1.0
+
+## Users request
+
+POST /api/user HTTP/1.1
+Content-Length: 104
+Content-Type: application/json
+Host: localhost:5000
+Content-Type: application/json
+Accept: */*
+Origin: chrome-extension://aejoelaoggembcahagimdiliamlcdmfm
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+
+{
+  "cin":"4952010",
+  "firstname":"fedi",
+  "lastname":"sarray",
+  "email":"fedi",
+  "type":"student"
+}
+
+## 
+
+GET http://localhost:5000/api/courses HTTP/1.1
