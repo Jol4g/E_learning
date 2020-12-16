@@ -30,7 +30,7 @@ var User= require('./routes/User')
 var Admin = require('./routes/Admin')
 
 //use middelware islogger in my route user
-app.use('/User',User);
+app.use('/user',User);
 app.use('/users',Users)
 app.use('/public',Public)
 // app.use('/admin',auth.isadmin,Admin)
