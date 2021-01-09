@@ -1,61 +1,96 @@
-import { Button } from "antd";
+import {Button, message} from "antd";
 import JWT from "jsonwebtoken";
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, {Component} from "react";
+import {Link} from "react-router-dom";
 import Navbar from "../components/Navbar";
-
+import './profile.css';
 export class Profile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {},
-    };
-  }
-  componentDidMount() {
-    let token = localStorage.getItem("auth");
-    let decode = JWT.decode(token);
-    this.setState({ user: decode });
-  }
-  componentWillUnmount(){
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: {},
+        };
+    }
 
-  }
-  
-  render() {
-    const { first_name, last_name, point } = this.state.user;
-    return (
-      <div>
-        <Navbar ok={true} />
-        <div>
-          <h2>Bonjour {first_name + " " + last_name}</h2>
-        </div>
+    componentDidMount() {
+        let token = localStorage.getItem("auth");
+        let decode = JWT.decode(token);
+        this.setState({user: decode});
+        message.success('Welcome back :)',2);
+    }
 
-        <div style={{display:'flex',flex:1,flexDirection:'row',width:'100%',justifyContent:'space-between'}}>
-          <div style={{display:'flex',flexDirection:'column',width:"80%"}}>
-            <h1>Cours</h1>
-            <ul>
-            <li>sad</li>
-            <li>sad</li>
-            <li>sad</li>
-                <li>sad</li>
-                <li>sad</li>
-                <li>sad</li>
-            </ul>
-          </div>
-          <div style={{display:'flex',flexDirection:'column',minWidth:'30%',textAlign:'center'}}>
-            <Button
-              disabled={point > -1 ? true : false}
-              key={1}
-              id="link"
-              type="link"
-            >
-              <Link to="/exam">Exam</Link>
-            </Button>
-            Status : { point === -1 ? "passe le QCM avec +70% pour reussir": point>70 ?"reussie avec "+point+"%":"refusee avec "+point+"%"}
-          </div>
-        </div>
-      </div>
-    );
-  }
+    componentWillUnmount() {
+
+    }
+
+    render() {
+        const {first_name, last_name, point} = this.state.user;
+        return (
+            <div>
+                <Navbar ok={true}/>
+                <div
+                    style={{
+                        padding: '30px',
+                    }}
+                >
+                    <h2
+                        style={{color:'#545454'}}
+                    >Bonjour {first_name + " " + last_name}</h2>
+
+
+                    <div style={{
+                        display: 'flex',
+                        flex: 1,
+                        flexDirection: 'row',
+                        width: '100%',
+                        justifyContent: 'space-between'
+                    }}>
+                        <div style={{display: 'flex', flexDirection: 'column', width: "80%"}}>
+                            <h1>
+                                Course
+                            </h1>
+                            <ul id={'list'} style={{listStyle:"none"}}>
+                                <li>Chapter 1:Les goose de alumnae</li>
+                                <li>Chapter 2:Les goose de alumnae</li>
+                                <li>Chapter 3:Les goose de alumnae</li>
+                                <li>Chapter 4:Les goose de alumnae</li>
+                                <li>Chapter 5:Les goose de alumnae</li>
+                                <li>Chapter 6:Les goose de alumnae</li>
+                                <li>Chapter 7:Les goose de alumnae</li>
+
+                            </ul>
+                        </div>
+                        <div
+                            style={{
+                                padding:20,
+                                marginTop:0,
+                                alignItems:'center',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                minWidth: '30%',
+                                height:'80%',
+                                textAlign: 'center',
+                                backgroundColor:'transparent',
+                                borderRadius:5,
+                                boxShadow:'0px 0px 5px 1px #ccc'
+                            }}
+                        >
+                            <Button
+                                disabled={point > -1 ? true : false}
+                                key={1}
+                                id="link"
+                                type="link"
+                            >
+                                <Link to="/exam">Exam</Link>
+                            </Button>
+                            Status
+                            : {point === -1 ? "passe le QCM avec +70% pour reussir" : point > 70 ? "reussie avec " + point + "%" : "refusee avec " + point + "%"}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Profile;

@@ -1,3 +1,4 @@
+
 const express = require("express")
 const users = express.Router()
 const cors = require("cors")
@@ -6,6 +7,8 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 
 const User = require("../models/User")
+const Teacher = require("../models/Teacher")
+
 users.use(cors())
 
 process.env.SECRET_KEY = 'secret'
@@ -56,6 +59,35 @@ res.json({hello: 'hello world'})
 })
 
 users.post('/login', (req, res) => {
+    Teacher.findOne({
+        email: req.body.email
+    })
+        .then(user => {
+            if (user) {
+                if (bcrypt.compareSync(req.body.password, user.password)) {
+                    payload = {
+                        _id: user._id,
+                        first_name: user.first_name,
+                        last_name: user.last_name,
+                        email: user.email,
+                        isrole :user.isrole,
+                        cours : user.cours,
+                        point: user.point
+                    }
+                    let token = jwt.sign(payload, process.env.SECRET_KEY, {
+                        expiresIn: 24  *  60  *  60
+                    })
+                    payload = {...payload,
+                        token : token,
+                        expires_in : 24  *  60  *  60
+                    }
+
+
+                    res.send(payload)
+                }}})
+
+
+
     User.findOne({
         email: req.body.email
     })
@@ -78,23 +110,23 @@ users.post('/login', (req, res) => {
                         token : token,
                         expires_in : 24  *  60  *  60
                     }
-                  
+
 
                     res.send(payload)
                 } else {
-                    res.json({ error: "User does not exist" })
+                    res.status(404).json({ error: "User does not exist" })
                 }
             } else {
-                res.json({ error: "User does not exist" })
+                res.status(404).json({ error: "User does not exist" })
             }
         })
         .catch(err => {
-            res.send('error: ' + err)
+            res.status(400).send('error: ' + err)
         })
 })
 
 users.get('/profile', (req, res) => {
-    
+
     token=req.headers.authorization
     var decoded = jwt.verify(token, process.env.SECRET_KEY)
 
@@ -114,7 +146,7 @@ users.get('/profile', (req, res) => {
             res.send('error: ' + err)
         })
 
-    
+
 
 })
 

@@ -3,19 +3,7 @@ import Axios from "axios";
 import React, { Component } from "react";
 import auth from "../auth/auth";
 import Navbar from "../components/Navbar";
-const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
-  };
-  const tailLayout = {
-    wrapperCol: {
-      offset: 8,
-      span: 16,
-    }};
+
 
 
 
@@ -45,7 +33,7 @@ export class Inscription extends Component {
      onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-   
+
   componentDidMount(){
 
     auth.verif();
@@ -63,9 +51,31 @@ export class Inscription extends Component {
     return (
       <div>
           <Navbar/>
+          <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+
+          }}
+          >
           <h1>Inscription cours {x}</h1>
+          <div
+              style={{
+                  position:'absolute',
+                  top:'200px',
+                  height:'300px',
+                  width:'340px',
+                  borderRadius:20,
+                  padding:'20px 0px 0px 0px',
+                  alignItems:'center',
+                  display:'flex',
+                  justifyContent:'center',
+                  backgroundColor: '#EEE',
+                  boxShadow:'0px 0px 3px 1px #ccc'
+              }}
+          >
         <Form
-          {...layout}
           name="basic"
           initialValues={{
             remember: true,
@@ -76,9 +86,9 @@ export class Inscription extends Component {
           <Form.Item
             label="Prenom"
             name="first_name"
+            labelCol={{span:6}}
             rules={[
               {
-                required: true,
                 message: "Please input your Prenom!",
               },
             ]}
@@ -86,11 +96,11 @@ export class Inscription extends Component {
             <Input />
           </Form.Item>
           <Form.Item
+              labelCol={{span:6}}
             label="Nom"
             name="last_name"
             rules={[
               {
-                required: true,
                 message: "Please input your Nom!",
               },
             ]}
@@ -98,15 +108,16 @@ export class Inscription extends Component {
             <Input />
           </Form.Item>
           <Form.Item
+
+              labelCol={{span:6}}
             label="Email"
             name="email"
-            
+
             rules={[  {
                 type: 'email',
                 message: 'The input is not valid E-mail!',
               },
               {
-                required: true,
                 message: "Please input your Email!",
               },
             ]}
@@ -115,11 +126,12 @@ export class Inscription extends Component {
           </Form.Item>
 
           <Form.Item
+
+              labelCol={{span:6}}
             label="Password"
             name="password"
             rules={[
               {
-                required: true,
                 message: "Please input your password!",
               },
             ]}
@@ -128,16 +140,26 @@ export class Inscription extends Component {
           </Form.Item>
 
 
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
+          <Form.Item
+
+              labelCol={{span:6}}>
+
+            <Button
+                style={{
+                    display: 'flex',
+                    width: '100%',
+                    alignContent: 'center',
+                    justifyContent: 'center'
+                }}
+                type="primary" htmlType="submit">
               inscrire
             </Button>
           </Form.Item>
-          <Form.Item {...tailLayout}>
             {this.state.stat}
-          </Form.Item>
-          
+
         </Form>
+          </div>
+          </div>
       </div>
     );
   }
