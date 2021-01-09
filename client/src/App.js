@@ -3,6 +3,7 @@ import * as React from "react";
 import Courses from "./courses/Courses";
 import PublicRoute from "./routes/PublicRoute";
 import Inscription from "./inscription/inscription";
+import Exam from "./profile/Exam";
 import Profile from "./profile/profile";
 import StudentRoute from "./routes/StudentRoute";
 import Login from "./login/login";
@@ -17,10 +18,11 @@ const App = () => {
   return(
     <Switch>
     <PublicRoute restricted={true} exact path="/" component={Courses} />
-      
+
     <PublicRoute restricted={true} exact path="/inscription" component={Inscription} />
     <PublicRoute restricted={true} exact path="/login" component={Login} />
-    
+
+    <StudentRoute exact path="/exam" component={Exam} />
     <StudentRoute exact path="/profile" component={Profile} />
     <TeacherRoute exact path="/teacher" component={Teacher} />
     <PrivateRoute exact path="/admin" component={Admin} />
