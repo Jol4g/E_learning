@@ -6,6 +6,12 @@ const radioStyle = {
     height: '30px',
     lineHeight: '30px',
 };
+
+const qStyle= {
+    fontFamily:'sans-serif',
+    paddingBottom:10,
+    lineHeight: 2
+}
 const QuestionBox = () => {
     const [value, setValue] = React.useState(null)
     const onChange=(e)=>{
@@ -20,7 +26,7 @@ const QuestionBox = () => {
                 padding:20
             }}
         >
-            <div id={'question'}>
+            <div style={qStyle} id={'question'}>
                 Qeulle est votre age ?
             </div>
             <div id={'answers'}>

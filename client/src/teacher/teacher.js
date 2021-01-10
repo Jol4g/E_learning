@@ -34,7 +34,7 @@ export class Teacher extends Component {
                 <Tabs>
                     <Tabs.TabPane
                     >
-
+hi
                     </Tabs.TabPane>
                     <Tabs.TabPane
                         tab="Manage course" key="1"
