@@ -21,7 +21,6 @@ export default function CourCard(props) {
                 height: '200px',
                 justifyContent: 'space-between',
                 borderRadius:20,
-                border:'solid 1px #ea01e0 '
 
             }}
         >
