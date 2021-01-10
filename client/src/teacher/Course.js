@@ -1,18 +1,33 @@
 import React from 'react';
-import {Button} from "antd";
-import {Link} from "react-router-dom";
-
+import { Upload, message} from "antd";
+import {InboxOutlined} from '@ant-design/icons'
 const Course = (props) => {
-    const {first_name, last_name, point} = props.user;
+
+    const { Dragger } = Upload;
+
+    const Dprops = {
+        name: 'file',
+        multiple: false,
+        action: '/user/',
+        onChange(info) {
+            const { status } = info.file;
+            if (status !== 'uploading') {
+                console.log(info.file, info.fileList);
+            }
+            if (status === 'done') {
+                message.success(`${info.file.name} file uploaded successfully.`);
+            } else if (status === 'error') {
+                message.error(`${info.file.name} file upload failed.`);
+            }
+        },
+    };
+
     return(
     <div
         style={{
             padding: '30px',
         }}
     >
-
-
-
         <div style={{
             display: 'flex',
             flex: 1,
@@ -50,16 +65,17 @@ const Course = (props) => {
                     boxShadow:'0px 0px 5px 1px #ccc'
                 }}
             >
-                <Button
-                    disabled={point > -1 ? true : false}
-                    key={1}
-                    id="link"
-                    type="link"
+                <Dragger
+                    {...Dprops}
                 >
-                    <Link to="/exam">Exam</Link>
-                </Button>
-                Status
-                : {point === -1 ? "passe le QCM avec +70% pour reussir" : point > 70 ? "reussie avec " + point + "%" : "refusee avec " + point + "%"}
+                    <p className="ant-upload-drag-icon">
+                        <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                    <p className="ant-upload-hint">
+                        Support for a single or bulk upload. Strictly prohibit pdf pptx file.
+                    </p>
+                </Dragger>
             </div>
         </div>
     </div>)

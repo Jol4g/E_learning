@@ -33,11 +33,11 @@ export class AddCourse extends Component {
         })
 
       };
-    
+
  onFinishFailed = (errorInfo) => {
         message.error('Failed:',1);
       };
-    
+
     render() {
         return (
             <div>
@@ -120,12 +120,7 @@ export class AddCourse extends Component {
       <Form.Item
         label="Description"
         name="description"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
+
       >
         <Input.TextArea/>
       </Form.Item>

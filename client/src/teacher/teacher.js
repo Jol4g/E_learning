@@ -3,7 +3,7 @@ import JWT from "jsonwebtoken";
 import React, {Component} from "react";
 import Navbar from "../components/Navbar";
 import Course from "./Course";
-
+import image from '../assets/teach.svg'
 export class Teacher extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +34,10 @@ export class Teacher extends Component {
                 <Tabs>
                     <Tabs.TabPane
                     >
-hi
+<div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+    <h3 style={{color:'whitesmoke',fontFamily:'sans-serif'}}>Teacher portal</h3>
+    <img src={image} alt={'table with teacher'} style={{zIndex:-99,position:'absolute',top:80,width:'50%'}}/>
+</div>
                     </Tabs.TabPane>
                     <Tabs.TabPane
                         tab="Manage course" key="1"

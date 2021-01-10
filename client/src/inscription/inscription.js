@@ -59,7 +59,13 @@ export class Inscription extends Component {
 
           }}
           >
-          <h1>Inscription cours {x}</h1>
+          <h1
+              style={{
+                  paddingTop:30,
+
+              }}
+          >
+              Inscription to {x} course</h1>
           <div
               style={{
                   position:'absolute',
@@ -71,7 +77,7 @@ export class Inscription extends Component {
                   alignItems:'center',
                   display:'flex',
                   justifyContent:'center',
-                  backgroundColor: '#EEE',
+                  backgroundColor: '#ffffff',
                   boxShadow:'0px 0px 3px 1px #ccc'
               }}
           >
@@ -152,7 +158,7 @@ export class Inscription extends Component {
                     justifyContent: 'center'
                 }}
                 type="primary" htmlType="submit">
-              inscrire
+              Signup
             </Button>
           </Form.Item>
             {this.state.stat}

@@ -5,7 +5,7 @@ import AddCourse from './addCourse'
 import DeleteCourse from './deleteCourse'
 import Navbar from '../components/Navbar'
 export class Admin extends Component {
-    
+
     constructor(props){
         super(props);
         this.state = {
@@ -31,9 +31,11 @@ export class Admin extends Component {
         return (
             <div>
                 <Navbar ok={true} />
-               <h1> Admin </h1>
+                <h2
+                    style={{padding:'30px 10px 0px 100px',color:'#545454'}}
+                >Bonjour Admin</h2>
                 <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" >
-                    <Menu.Item key={1} >add course</Menu.Item>                    
+                    <Menu.Item key={1} >add course</Menu.Item>
                     <Menu.Item key={2}> manage course</Menu.Item>
                 </Menu>
                 {current === '1' ? <AddCourse/> : <DeleteCourse courses={this.state.courses} /> }

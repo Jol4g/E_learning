@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {Button} from "antd";
 
 export default function CourCard(props) {
     const handleClick = () => {
@@ -10,7 +11,8 @@ export default function CourCard(props) {
     return (
         <div
             style={{
-                backgroundColor: '#eee',
+                boxShadow:'0px 1px 5px 1px #bcbcbc',
+                backgroundColor: '#fffaff',
                 padding: '20px',
                 margin: '20px',
                 display: 'flex',
@@ -18,16 +20,18 @@ export default function CourCard(props) {
                 width: '400px',
                 height: '200px',
                 justifyContent: 'space-between',
+                borderRadius:20,
+                border:'solid 1px #ea01e0 '
 
             }}
         >
             <div
                 id={'title'}
                 style={{
-                    fontFamily: 'sans-serif',
+                    fontFamily: 'monospace',
                     fontWeight: 'bold',
                     fontSize: '20px',
-                    color: '#a3a3a3'
+                    color: '#ac02a5'
                 }}>
                 {props.data.category}
             </div>
@@ -35,16 +39,18 @@ export default function CourCard(props) {
                 {props.data.description}
             </div>
             <div>
-                <button
+                <Button
                     onClick={handleClick}
                 >
                     <Link
                         to={'/inscription'}
-                        style={{color:'black'}}
+                        style={{
+                            fontFamily:'sans-serif'
+                        }}
                     >
                         Join course
                     </Link>
-                </button>
+                </Button>
             </div>
         </div>
     );

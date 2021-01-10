@@ -90,12 +90,13 @@ export class Login extends Component {
                             padding:'10px 30px',
                             alignItems:'center',
                             display:'flex',
-                            justifyContent:'center',
-                            backgroundColor: '#EEE',
+                            justifyContent:'space-between',
+                            backgroundColor: '#ffffff',
                             boxShadow:'0px 0px 3px 1px #ccc'
                         }}
                     >
                         <Form
+
                         name="basic"
                         onFinish={this.onFinish}
                         onFinishFailed={this.onFinishFailed}
@@ -143,7 +144,7 @@ export class Login extends Component {
                                     justifyContent: 'center'
                                 }}
                             >
-                                Signup
+                                Login
                             </Button>
                         </Form.Item>
                         {this.state.stat}
