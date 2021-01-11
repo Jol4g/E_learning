@@ -4,11 +4,14 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import './profile.css';
+import ListItem from "../components/ListItem";
+import axios from "axios";
 export class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             user: {},
+            files:[],
         };
     }
 
@@ -17,6 +20,11 @@ export class Profile extends Component {
         let decode = JWT.decode(token);
         this.setState({user: decode});
         message.success('Welcome back :)',2);
+        axios.get('user/getFiles')
+            .then((data)=>{
+                console.log(data.data)
+                this.setState({files:data.data.files})
+            })
     }
 
     componentWillUnmount() {
@@ -49,14 +57,10 @@ export class Profile extends Component {
                             <h1>
                                 Course
                             </h1>
-                            <ul id={'list'} style={{listStyle:"none"}}>
-                                <li>Chapter 1:Les goose de alumnae</li>
-                                <li>Chapter 2:Les goose de alumnae</li>
-                                <li>Chapter 3:Les goose de alumnae</li>
-                                <li>Chapter 4:Les goose de alumnae</li>
-                                <li>Chapter 5:Les goose de alumnae</li>
-                                <li>Chapter 6:Les goose de alumnae</li>
-                                <li>Chapter 7:Les goose de alumnae</li>
+                            <ul id={'list'} style={{listStyle: "none"}}>
+                                {this.state.files.length>0 ? this.state.files.map((file)=> {
+                                    return (<ListItem key={this.state.files.indexOf(file)} file={file}/>)
+                                }): null}
 
                             </ul>
                         </div>

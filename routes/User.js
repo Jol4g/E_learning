@@ -31,6 +31,18 @@ user.post('/uploadFile', upload, (req, res) => {
 
 })
 
+user.get('/download/:name',(req,res)=>{
+
+    const fs = require('fs');
+    fs.readFile('./uploads/'+req.params.name, 'utf8', function(err, contents) {
+        console.log(contents);
+        res.contentType("application");
+        res.send(contents);
+    });
+    console.log("");
+
+})
+
 user.get('/getFiles', (req, res) => {
 
     const fs = require('fs')
@@ -41,10 +53,7 @@ user.get('/getFiles', (req, res) => {
         files.push(file);
     });
     res.status(200).send({files:files})
-    // var file = fs.createReadStream('./uploads/016057882890_td2csmacd-correctionex4.pdf');
-    // res.setHeader('Content-Type', 'application/pdf');
-    // res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
-    // file.pipe(res);
+
 })
 
 user.get('/getChapter', (req, res) => {

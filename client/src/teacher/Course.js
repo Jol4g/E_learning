@@ -1,12 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {Button, message, Upload} from "antd";
+import {Button, message, notification, Upload} from "antd";
 import {InboxOutlined} from '@ant-design/icons'
 import axios from "axios";
 import ListItem from "../components/ListItem";
 
 const Course = (props) => {
     const [files, setFiles] = useState([]);
+    const args = {
+        message: 'Notification guide',
+        description:
+            'Every time you deleted a course validate with Update Button, \n Click Refresh to get courses.',
+        duration: 0,
+    };
     useEffect(() => {
+
+        notification.info(args);
         axios.get('user/getFiles')
             .then((data)=>{
                 console.log(data.data)
@@ -19,6 +27,8 @@ const Course = (props) => {
         axios.get('user/getFiles')
             .then((data)=>{
                 console.log(data.data)
+
+                message.success('Refreshed',2);
                 setFiles(data.data.files)
             })
     }
@@ -32,6 +42,7 @@ const Course = (props) => {
         axios.get('user/getFiles')
         .then((data)=>{
             console.log(data.data)
+            message.success('Updated',2);
             setFiles(data.data.files)
         })
     }

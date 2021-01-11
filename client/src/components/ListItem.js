@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from "antd";
+import axios from "axios";
 
 const ListItem = (props) => {
 
@@ -7,7 +8,7 @@ const ListItem = (props) => {
         <li
         style={{display:'flex',flexDirection:'row ',justifyContent:'space-between'}}
         >
-            <a download={props.file}>{props.file}</a>
+            <a target={'_blank'} href={'/download/'+props.file} >{props.file}</a>
             {props.teacher ? <
                 Button
                 onClick={()=> {

@@ -21,7 +21,7 @@ const App = () => {
 
     <PublicRoute restricted={true} exact path="/inscription" component={Inscription} />
     <PublicRoute restricted={true} exact path="/login" component={Login} />
-
+    {/*<PublicRoute exact path={'/download/:name'} component={PdfView} /> */}
     <StudentRoute exact path="/exam" component={Exam} />
     <StudentRoute exact path="/profile" component={Profile} />
     <TeacherRoute exact path="/teacher" component={Teacher} />
